@@ -5,12 +5,14 @@ import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { TimesheetComponent } from './comonents/timesheet/timesheet.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DepartmentsComponent,
-    TimesheetComponent
+    TimesheetComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
