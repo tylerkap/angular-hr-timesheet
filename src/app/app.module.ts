@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { TimesheetComponent } from './comonents/timesheet/timesheet.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
+import { AnalyticsTableComponent } from './components/analytics-table/analytics-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DepartmentsComponent,
     TimesheetComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    TopNavbarComponent,
+    AnalyticsTableComponent
   ],
   imports: [
     BrowserModule,
