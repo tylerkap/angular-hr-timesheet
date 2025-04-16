@@ -7,5 +7,11 @@
                 <input matInput [formControl]="employeeNameFC" placeholder="Employee Name" type="text">
             </mat-form-field>
         </mat-card>
+
+        <button mat-mini-fab color="primary" (click)="addEmployee()">
+            <mat-icon>add</mat-icon>
+        </button>
+
+        <div>{{employees | json}}</div>
     </div>
 </div>
