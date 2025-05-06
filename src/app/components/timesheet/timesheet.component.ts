@@ -93,7 +93,11 @@ export class TimesheetComponent {
 
   submit(): void {
     this.employees.forEach(employee => {
-      this.employeeService.saveEmployeeHours(employee);
+        if (employee.id) {
+            this.employeeService.updateEmployeeHours(employee);
+        } else {
+            this.employeeService.saveEmployeeHours(employee);
+        }
     });
 
     this.router.navigate(['./departments']);
