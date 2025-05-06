@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Employee } from '../../interfaces/employee';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-analytics-table',
@@ -69,10 +70,16 @@ export class AnalyticsTableComponent {
     }
   ];
 
-  constructor() {}
+  constructor(
+    private employeeService: EmployeeService
+) { }
 
   ngOnInit(): void {
-    this.employees = this.employeeData.filter(employee => employee.departmentId === this.departmentId);
+    //this.employees = this.employeeData.filter(employee => employee.departmentId === this.departmentId);
+
+    this.employeeService.getEmployeeHoursByDepartment(this.departmentId).subscribe((employees: Employee[]) => {
+      this.employees = employees;
+    });
   }
 
   getTotalHours(employee: Employee): number {
