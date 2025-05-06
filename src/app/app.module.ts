@@ -11,6 +11,13 @@ import { AnalyticsTableComponent } from './components/analytics-table/analytics-
 import { MaterialModule } from './modules/material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { provideHttpClient } from '@angular/common/http';
+import { withInterceptorsFromDi } from '@angular/common/http';
+import { EmployeeService } from './services/employee.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -26,9 +33,18 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: EmployeeService,
+      useFactory: (afs: AngularFirestore) => new EmployeeService(afs),
+      deps: [AngularFirestore],
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
